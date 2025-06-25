@@ -24,4 +24,4 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 O projeto DevMarcus é um agregador de links utilizado por mim como cartão de visitas online.
 
 
-Desenvolvido por Marcus Vinícius. :desktop:
+Desenvolvido por Marcus Vinícius.
