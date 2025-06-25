@@ -39,3 +39,13 @@ function updateImage() {
 
 // Chama automaticamente ao carregar a página
 window.addEventListener("DOMContentLoaded", updateImage)
+
+// Efeito de transição da página
+function navegarComTransicao(destino) {
+  document.body.classList.add('fade-out')
+
+  // Aguarda o tempo da transição antes de trocar de página
+  setTimeout(() => {
+    window.location.href = destino
+  }, 500)
+}

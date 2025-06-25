@@ -24,7 +24,7 @@
 
     <!-- Conteúdo principal da página -->
     <div id="container-sobre">
-        
+
         <!-- Seção de perfil -->
         <div id="profile">
             <img src="/assets/avatar.png"
@@ -75,6 +75,13 @@
         if (savedTheme === "light") {
             document.documentElement.classList.add("light")
         }
+    </script>
+
+    <script>
+        // Garantir que o fade-in ocorra após o carregamento
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded')
+        })
     </script>
 
 </body>

@@ -156,6 +156,23 @@ ul li a:hover {
     transition: background 0.2s;
 }
 
+/* Início sobre.html */
+
+/* Efeitos fade de entrada e saída */
+body {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
 /* Caixa de texto em forma de balão */
 .message-bubble {
     background: var(--surface-color, #fff);
