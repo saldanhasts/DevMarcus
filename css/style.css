@@ -91,6 +91,11 @@ body * {
     left: inherit;
 }
 
+/* Hover no switch */
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
+}
+
 /* Trilha do switch */
 #switch span {
     display: block;
