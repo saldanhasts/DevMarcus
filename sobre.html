@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Marcus Vinícius</title>
+
+    <!-- Fontes e Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <a href="index.html" class="back-floating" title="Voltar para a página inicial">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+    </a>
+
+    <div id="container-sobre">
+        <div id="profile">
+            <img src="/assets/avatar.png"
+                alt="Foto de Marcus Vinícius com barba usando óculos de sol, olhando levemente para o lado, vestindo camisa branca e ao fundo algumas árvores.">
+            <p>Marcus Vinícius</p>
+        </div>
+
+        <div class="message-bubble">
+            <p class="hello">
+                Olá!
+                
+            </p>
+            <p>
+                Me chamo Marcus Vinicius Saldanha, sou Desenvolvedor Front-end com experiência em HTML5, CSS3 e
+                JavaScript,
+                focado na criação de interfaces responsivas, organizadas e com boa experiência de navegação.
+            </p>
+            <p>
+                Atualmente, sigo aprimorando meus conhecimentos em JavaScript e fortalecendo minha base técnica com foco
+                em evolução contínua e entregas de qualidade.
+            </p>
+            <p>
+                Também estou em constante desenvolvimento no inglês, o que tem ampliado minha capacidade de acompanhar
+                materiais técnicos e me preparar para desafios cada vez maiores na área.
+            </p>
+            <p>
+                Sou comprometido, proativo e estou sempre em busca de aprendizado. Se você procura alguém com dedicação,
+                senso de crescimento e vontade de contribuir com o time, estou pronto para somar!
+            </p>
+        </div>
+
+        <footer>
+            Desenvolvido por Marcus Vinícius Saldanha
+        </footer>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Ao carregar a página, aplica o tema salvo
+        const savedTheme = localStorage.getItem("theme")
+        if (savedTheme === "light") {
+            document.documentElement.classList.add("light")
+        }
+    </script>
+
+</body>
+
+</html>

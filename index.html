@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Marcus</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="profile">
+            <img src="/assets/avatar.png"
+                alt="Foto de Marcus Vinícius com barba usando óculos de sol, olhando levemente para o lado, vestindo camisa branca e ao fundo algumas árvores.">
+            <p>Marcus Vinícius</p>
+        </div>
+
+        <div id="switch" onclick="toggleMode()">
+            <button></button>
+            <span></span>
+        </div>
+
+        <ul>
+            <li><a href="https://br.linkedin.com/in/marcus-vin%C3%ADcius-saldanha-a5b6381a8" target="_blank">Visualizar
+                    LinkedIn</a></li>
+            <li><a href="https://github.com/saldanhasts" target="_blank">Acessar Perfil do GitHub</a></li>
+            <li><a href="/sobre.html" target="_blank">Sobre Marcus Vinícius</a></li>
+            <li><a href="https://drive.google.com/uc?export=download&id=1RnFwPWb9rn52iBGCohIl7UnJitEeypQC"
+                    target="_blank">Obter Currículo</a></li>
+        </ul>
+        <div id="social-links">
+            <a href="mailto:mvsaldanhasantos@gmail.com" target="_blank">
+                <ion-icon name="mail-outline"></ion-icon>
+            </a>
+            <a href="https://www.instagram.com/saldanhasts/" target="_blank">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="https://api.whatsapp.com/send/?phone=5531973318300&text=Ol%C3%A1+Marcus+Vin%C3%ADcius%2C+tudo+bem%3F+&type=phone_number&app_absent=0"
+                target="_blank">
+                <ion-icon name="logo-whatsApp"></ion-icon>
+            </a>
+        </div>
+        <footer>
+            Desenvolvido por Marcus Vinícius Saldanha
+        </footer>
+    </div>
+    <!--SCRIPT PARA UTILIZAÇÃO DOS ÍCONES-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Ao carregar a página, aplica o tema salvo
+        const savedTheme = localStorage.getItem("theme")
+        if (savedTheme === "light") {
+            document.documentElement.classList.add("light")
+        }
+    </script>
+</body>
+
+</html>
