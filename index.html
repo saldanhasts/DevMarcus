@@ -2,30 +2,42 @@
 <html lang="pt-br" class="">
 
 <head>
+    <!-- Pré-conexão para otimizar carregamento de fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonte principal usada no projeto -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+
+    <!-- Configurações básicas -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título -->
     <title>Dev Marcus</title>
+
+    <!-- Estilo principal -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div id="container">
+        <!-- Perfil do desenvolvedor -->
         <div id="profile">
             <img src="/assets/avatar.png"
                 alt="Foto de Marcus Vinícius com barba usando óculos de sol, olhando levemente para o lado, vestindo camisa branca e ao fundo algumas árvores.">
             <p>Marcus Vinícius</p>
         </div>
 
+        <!-- Botão de alternância de tema -->
         <div id="switch" onclick="toggleMode()">
             <button></button>
             <span></span>
         </div>
 
+        <!-- Lista de links principais -->
         <ul>
             <li><a href="https://br.linkedin.com/in/marcus-vin%C3%ADcius-saldanha-a5b6381a8" target="_blank">Visualizar
                     LinkedIn</a></li>
@@ -34,6 +46,8 @@
             <li><a href="https://drive.google.com/uc?export=download&id=1RnFwPWb9rn52iBGCohIl7UnJitEeypQC"
                     target="_blank">Obter Currículo</a></li>
         </ul>
+
+        <!-- Links para redes sociais -->
         <div id="social-links">
             <a href="mailto:mvsaldanhasantos@gmail.com" target="_blank">
                 <ion-icon name="mail-outline"></ion-icon>
@@ -46,14 +60,18 @@
                 <ion-icon name="logo-whatsApp"></ion-icon>
             </a>
         </div>
+
+        <!-- Rodapé -->
         <footer>
             Desenvolvido por Marcus Vinícius Saldanha
         </footer>
     </div>
-    <!--SCRIPT PARA UTILIZAÇÃO DOS ÍCONES-->
+
+    <!-- Scripts dos ícones do Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+    <!-- Script principal -->
     <script src="script.js"></script>
 
     <script>
