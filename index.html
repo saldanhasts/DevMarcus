@@ -1,93 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="">
-
-<head>
+  <head>
     <!-- Pré-conexão para otimizar carregamento de fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Fonte principal usada no projeto -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Configurações básicas -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Título -->
     <title>Dev Marcus</title>
 
     <!-- Estilo principal -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
     <div id="container">
-        <!-- Perfil do desenvolvedor -->
-        <div id="profile">
-            <img src="./assets/avatar.png"
-                alt="Foto de Marcus Vinícius com barba, olhando para a foto, vestindo camisa preta e um fundo branco.">
-            <p>Marcus Vinícius</p>
-        </div>
+      <div id="profile">
+        <img
+          src="./assets/avatar.png"
+          alt="Foto de Marcus Vinícius com barba, olhando para a foto, vestindo camisa preta e um fundo branco."
+        />
+        <p>Marcus Vinícius</p>
+      </div>
 
-        <!-- Botão de alternância de tema -->
-        <div id="switch" onclick="toggleMode()">
-            <button></button>
-            <span></span>
-        </div>
+      <!-- Botão do tema -->
+      <div id="switch" onclick="toggleMode()">
+        <button></button>
+        <span></span>
+      </div>
 
-        <!-- Lista de links principais -->
-        <ul>
-            <li><a href="https://br.linkedin.com/in/marcus-vin%C3%ADcius-saldanha-a5b6381a8" target="_blank">Visualizar
-                    LinkedIn</a></li>
-            <li><a href="https://github.com/saldanhasts" target="_blank">Acessar Perfil do GitHub</a></li>
-            <li><a href="sobre.html" onclick="navegarComTransicao('sobre.html')">Sobre Marcus Vinícius</a></li>
-            <li><a href="https://drive.google.com/uc?export=download&id=1RnFwPWb9rn52iBGCohIl7UnJitEeypQC">Obter
-                    Currículo</a></li>
-        </ul>
+      <!-- Lista de links principais -->
+      <ul>
+        <li>
+          <a
+            href="https://br.linkedin.com/in/marcus-vin%C3%ADcius-saldanha-a5b6381a8"
+            target="_blank"
+            >Visualizar LinkedIn</a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/saldanhasts" target="_blank"
+            >Acessar Perfil do GitHub</a
+          >
+        </li>
+        <li>
+          <a href="sobre.html" onclick="navegarComTransicao('sobre.html')"
+            >Sobre Marcus Vinícius</a
+          >
+        </li>
+        <li>
+          <a
+            href="projetos.html"
+            onclick="navegarComTransicao('projetos.html')"
+          >
+            Ver projetos
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://drive.google.com/uc?export=download&id=1RnFwPWb9rn52iBGCohIl7UnJitEeypQC"
+            >Obter Currículo</a
+          >
+        </li>
+      </ul>
 
-        <!-- Links para redes sociais -->
-        <div id="social-links">
-            <a href="mailto:mvsaldanhasantos@gmail.com" target="_blank">
-                <ion-icon name="mail-outline"></ion-icon>
-            </a>
-            <a href="https://www.instagram.com/saldanhasts/" target="_blank">
-                <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-            <a href="https://api.whatsapp.com/send/?phone=5531973318300&text=Ol%C3%A1+Marcus+Vin%C3%ADcius%2C+tudo+bem%3F+&type=phone_number&app_absent=0"
-                target="_blank">
-                <ion-icon name="logo-whatsApp"></ion-icon>
-            </a>
-        </div>
+      <!-- Links para redes sociais -->
+      <div id="social-links">
+        <a href="mailto:mvsaldanhasantos@gmail.com" target="_blank">
+          <ion-icon name="mail-outline"></ion-icon>
+        </a>
+        <a href="https://www.instagram.com/saldanhasts/" target="_blank">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a
+          href="https://api.whatsapp.com/send/?phone=5531973318300&text=Ol%C3%A1+Marcus+Vin%C3%ADcius%2C+tudo+bem%3F+&type=phone_number&app_absent=0"
+          target="_blank"
+        >
+          <ion-icon name="logo-whatsApp"></ion-icon>
+        </a>
+      </div>
 
-        <!-- Rodapé -->
-        <footer>
-            Desenvolvido por Marcus Vinícius Saldanha
-        </footer>
+      <!-- Rodapé -->
+      <footer>Desenvolvido por Marcus Vinícius Saldanha</footer>
     </div>
 
     <!-- Scripts dos ícones do Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
 
     <!-- Script principal -->
     <script src="script.js"></script>
 
     <script>
-        // Ao carregar a página, aplica o tema salvo
-        const savedTheme = localStorage.getItem("theme")
-        if (savedTheme === "light") {
-            document.documentElement.classList.add("light")
-        }
+      // Aplica o tema salvo depois do carregamento
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.documentElement.classList.add("light");
+      }
     </script>
 
     <script>
-        // Garantir que o fade-in ocorra após o carregamento
-        window.addEventListener('load', () => {
-            document.body.classList.add('loaded')
-        })
+      // Garante o fade-in após o carregamento
+      window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+      });
     </script>
-</body>
-
+  </body>
 </html>

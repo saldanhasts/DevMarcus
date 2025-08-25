@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projetos – Dev Marcus</title>
+
+    <!-- Usa o mesmo CSS do site (fundo, variáveis etc.) -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      /* Layout da página de projetos (conteúdo na frente, fundo do site por trás) */
+      .projects-page {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      /* Cartão de vidro (na frente do background) */
+      .card {
+        width: min(720px, 92vw);
+        border-radius: 16px;
+        background: var(--surface-color);
+        border: 1px solid var(--stroke-color);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-header {
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--stroke-color);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .card-header h1 {
+        grid-column: 2;
+        justify-self: center;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+        color: var(--text-color);
+      }
+
+      #counter {
+        grid-column: 3;
+        justify-self: end;
+        opacity: 0.8;
+      }
+
+      /* Área do carrossel */
+      .carousel {
+        position: relative;
+        padding: 22px;
+      }
+
+      .slide {
+        display: none;
+        text-align: center;
+        padding: 8px 4px 0;
+      }
+      .slide.active {
+        display: block;
+      }
+
+      .slide h2 {
+        margin: 0 0 8px;
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--text-color);
+        word-break: break-word;
+      }
+
+      .slide p {
+        margin: 0 0 16px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--text-color);
+        opacity: 0.9;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 10px 16px;
+        border-radius: 10px;
+        border: 1px solid var(--stroke-color);
+        background: var(--surface-color);
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.15s ease, background 0.2s ease,
+          border-color 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        border-color: var(--text-color);
+      }
+
+      .btn-primary {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        border: none;
+        color: #fff;
+      }
+      .btn-primary:hover {
+        filter: brightness(1.05);
+      }
+
+      /* Setas do carrossel */
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        border: 1px solid var(--stroke-color);
+        background: var(--surface-color);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.2s ease, border-color 0.2s ease,
+          transform 0.1s ease;
+      }
+      .arrow:hover {
+        border-color: var(--text-color);
+        transform: translateY(-50%) scale(1.04);
+      }
+      .arrow:active {
+        transform: translateY(-50%) scale(0.98);
+      }
+
+      .arrow-left {
+        left: 12px;
+      }
+      .arrow-right {
+        right: 12px;
+      }
+
+      .arrow span {
+        font-size: 18px;
+        color: var(--text-color);
+        line-height: 0;
+      }
+
+      /* Rodapé do cartão (pontos de posição) */
+      .dots {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        padding: 16px 0 20px;
+        border-top: 1px solid var(--stroke-color);
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--stroke-color);
+        opacity: 0.7;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+      }
+      .dot.active {
+        transform: scale(1.3);
+        opacity: 1;
+        background: var(--text-color);
+      }
+
+      /* Acessibilidade: foco visível */
+      .arrow:focus-visible,
+      .btn:focus-visible {
+        outline: 2px solid #6a11cb;
+        outline-offset: 2px;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          margin: 0 auto;
+          width: min(620px, 100%);
+        }
+      }
+
+      @media (max-width: 520px) {
+        .card-header h1 {
+          font-size: 18px;
+        }
+        .slide h2 {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="projects-page">
+      <div class="card">
+        <div class="card-header">
+          <h1 style="text-align: center; margin-bottom: 20px">Meus Projetos</h1>
+          <!-- opcional: espaço para um contador -->
+          <div id="counter" aria-live="polite" style="opacity: 0.8"></div>
+        </div>
+
+        <div class="carousel" role="region" aria-label="Carrossel de projetos">
+          <!-- setas -->
+          <button
+            class="arrow arrow-left"
+            id="prev"
+            aria-label="Projeto anterior"
+            type="button"
+          >
+            <span>‹</span>
+          </button>
+          <button
+            class="arrow arrow-right"
+            id="next"
+            aria-label="Próximo projeto"
+            type="button"
+          >
+            <span>›</span>
+          </button>
+
+          <!-- slides -->
+          <div id="slides">
+            <!-- Preenchido via JS -->
+          </div>
+        </div>
+
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+
+    <!-- Ionicons
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  -->
+
+    <script>
+      // Garante que a página apareça mesmo com seu CSS de fade-in
+      window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+      });
+
+      const username = "saldanhasts";
+      const slidesEl = document.getElementById("slides");
+      const dotsEl = document.getElementById("dots");
+      const counter = document.getElementById("counter");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+
+      let projects = [];
+      let index = 0;
+
+      async function loadRepos() {
+        try {
+          const res = await fetch(
+            `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
+          );
+          const repos = await res.json();
+
+          // Tenta priorizar repositórios com GitHub Pages
+          let list = repos.filter((r) => r.has_pages);
+
+          // Fallback para o caso de não haver pages, usa os 8 mais recentes
+          if (!list.length) list = repos.slice(0, 8);
+
+          // Monta um array enxuto pro carrossel
+          projects = list.map((r) => ({
+            name: r.name,
+            description: r.description || "Sem descrição disponível.",
+            repoUrl: r.html_url,
+            siteUrl: r.has_pages
+              ? `https://${username}.github.io/${r.name}`
+              : null,
+          }));
+
+          if (!projects.length) {
+            // Último fallback pra mostrar algo estático
+            projects = [
+              {
+                name: "Nenhum projeto encontrado",
+                description: "Não foi possível obter os repositórios agora.",
+                repoUrl: `https://github.com/${username}`,
+              },
+            ];
+          }
+
+          renderSlides();
+          updateUI();
+        } catch (e) {
+          console.error(e);
+          projects = [
+            {
+              name: "Erro ao carregar",
+              description: "Tente recarregar a página em alguns instantes.",
+              repoUrl: `https://github.com/${username}`,
+            },
+          ];
+          renderSlides();
+          updateUI();
+        }
+      }
+
+      function renderSlides() {
+        slidesEl.innerHTML = "";
+        dotsEl.innerHTML = "";
+
+        projects.forEach((p, i) => {
+          const slide = document.createElement("div");
+          slide.className = "slide" + (i === 0 ? " active" : "");
+          slide.setAttribute("role", "group");
+          slide.setAttribute("aria-roledescription", "slide");
+          slide.setAttribute("aria-label", `${i + 1} de ${projects.length}`);
+
+          slide.innerHTML = `
+          <h2>${p.name}</h2>
+          <p>${p.description}</p>
+          <div class="actions">
+            <a class="btn" href="${
+              p.repoUrl
+            }" target="_blank" rel="noopener">Ver repositório</a>
+            ${
+              p.siteUrl
+                ? `<a class="btn btn-primary" href="${p.siteUrl}" target="_blank" rel="noopener">Ver site</a>`
+                : ""
+            }
+          </div>
+        `;
+          slidesEl.appendChild(slide);
+
+          const dot = document.createElement("div");
+          dot.className = "dot" + (i === 0 ? " active" : "");
+          dot.addEventListener("click", () => {
+            index = i;
+            updateUI();
+          });
+          dotsEl.appendChild(dot);
+        });
+      }
+
+      function updateUI() {
+        const slides = Array.from(document.querySelectorAll(".slide"));
+        const dots = Array.from(document.querySelectorAll(".dot"));
+
+        slides.forEach((s, i) => s.classList.toggle("active", i === index));
+        dots.forEach((d, i) => d.classList.toggle("active", i === index));
+
+        if (counter) counter.textContent = `${index + 1} / ${projects.length}`;
+      }
+
+      // Navegação
+      prevBtn.addEventListener("click", () => {
+        index = (index - 1 + projects.length) % projects.length;
+        updateUI();
+      });
+      nextBtn.addEventListener("click", () => {
+        index = (index + 1) % projects.length;
+        updateUI();
+      });
+
+      // Teclado (← →)
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          prevBtn.click();
+        }
+        if (e.key === "ArrowRight") {
+          nextBtn.click();
+        }
+      });
+
+      loadRepos();
+    </script>
+  </body>
+</html>
