@@ -370,5 +370,23 @@
 
       loadRepos();
     </script>
+
+    <!-- Script principal -->
+    <script src="script.js"></script>
+
+    <script>
+        // Ao carregar a página, aplica o tema salvo
+        const savedTheme = localStorage.getItem("theme")
+        if (savedTheme === "light") {
+            document.documentElement.classList.add("light")
+        }
+    </script>
+
+    <script>
+        // Garantir que o fade-in ocorra após o carregamento
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded')
+        })
+    </script>
   </body>
 </html>
