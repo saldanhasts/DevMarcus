@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projetos – Dev Marcus</title>
 
-    <!-- Usa o mesmo CSS do site (fundo, variáveis etc.) -->
     <link rel="stylesheet" href="css/style.css" />
 
     <style>
-      /* Layout da página de projetos (conteúdo na frente, fundo do site por trás) */
       .projects-page {
         min-height: 100vh;
         display: grid;
@@ -17,7 +15,6 @@
         padding: 24px;
       }
 
-      /* Cartão de vidro (na frente do background) */
       .card {
         width: min(720px, 92vw);
         border-radius: 16px;
@@ -55,7 +52,6 @@
         opacity: 0.8;
       }
 
-      /* Área do carrossel */
       .carousel {
         position: relative;
         padding: 22px;
@@ -118,7 +114,6 @@
         filter: brightness(1.05);
       }
 
-      /* Setas do carrossel */
       .arrow {
         position: absolute;
         top: 50%;
@@ -156,7 +151,6 @@
         line-height: 0;
       }
 
-      /* Rodapé do cartão (pontos de posição) */
       .dots {
         display: flex;
         gap: 6px;
@@ -178,7 +172,6 @@
         background: var(--text-color);
       }
 
-      /* Acessibilidade: foco visível */
       .arrow:focus-visible,
       .btn:focus-visible {
         outline: 2px solid #6a11cb;
@@ -202,17 +195,34 @@
       }
     </style>
   </head>
+
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js">
+  </script>
+
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js">
+  </script>
+
   <body>
+    <a
+      href="index.html"
+      class="back-floating"
+      title="Voltar para a página inicial"
+    >
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </a>
+
     <div class="projects-page">
       <div class="card">
         <div class="card-header">
           <h1 style="text-align: center; margin-bottom: 20px">Meus Projetos</h1>
-          <!-- opcional: espaço para um contador -->
           <div id="counter" aria-live="polite" style="opacity: 0.8"></div>
         </div>
 
         <div class="carousel" role="region" aria-label="Carrossel de projetos">
-          <!-- setas -->
           <button
             class="arrow arrow-left"
             id="prev"
@@ -230,23 +240,14 @@
             <span>›</span>
           </button>
 
-          <!-- slides -->
-          <div id="slides">
-            <!-- Preenchido via JS -->
-          </div>
+          <div id="slides"></div>
         </div>
 
         <div class="dots" id="dots"></div>
       </div>
     </div>
 
-    <!-- Ionicons
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  -->
-
     <script>
-      // Garante que a página apareça mesmo com seu CSS de fade-in
       window.addEventListener("load", () => {
         document.body.classList.add("loaded");
       });
@@ -268,13 +269,9 @@
           );
           const repos = await res.json();
 
-          // Tenta priorizar repositórios com GitHub Pages
           let list = repos.filter((r) => r.has_pages);
-
-          // Fallback para o caso de não haver pages, usa os 8 mais recentes
           if (!list.length) list = repos.slice(0, 8);
 
-          // Monta um array enxuto pro carrossel
           projects = list.map((r) => ({
             name: r.name,
             description: r.description || "Sem descrição disponível.",
@@ -285,7 +282,6 @@
           }));
 
           if (!projects.length) {
-            // Último fallback pra mostrar algo estático
             projects = [
               {
                 name: "Nenhum projeto encontrado",
@@ -358,7 +354,6 @@
         if (counter) counter.textContent = `${index + 1} / ${projects.length}`;
       }
 
-      // Navegação
       prevBtn.addEventListener("click", () => {
         index = (index - 1 + projects.length) % projects.length;
         updateUI();
@@ -368,14 +363,9 @@
         updateUI();
       });
 
-      // Teclado (← →)
       document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          prevBtn.click();
-        }
-        if (e.key === "ArrowRight") {
-          nextBtn.click();
-        }
+        if (e.key === "ArrowLeft") prevBtn.click();
+        if (e.key === "ArrowRight") nextBtn.click();
       });
 
       loadRepos();
